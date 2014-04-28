@@ -107,18 +107,20 @@ class EnvironmentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WebsiteEnvironment
-        fields = ('id', 'created', 'modified', 'website', 'name', 'server', 'enabled', 'detail_url', 'egg_list')
+        fields = ('id', 'created', 'modified', 'website', 'name', 'server', 'enabled', 'detail_url')
 
 
 class EnvironmentDetailSerializer(EnvironmentSerializer):
     """
     Serializer for ``WebsiteEnvironment`` detailled model
     """
+    website_name = serializers.RelatedField(source='website.name', read_only=True)
+    
     eggs = serializers.RelatedField(many=True, read_only=True)
     
     class Meta:
         model = WebsiteEnvironment
-        fields = ('id', 'created', 'modified', 'website', 'name', 'server', 'enabled', 'detail_url', 'eggs', 'egg_list')
+        fields = ('id', 'created', 'modified', 'website', 'website_name', 'name', 'server', 'enabled', 'detail_url', 'eggs', 'egg_list')
 
 
 class WebsiteSerializer(serializers.ModelSerializer):
@@ -137,7 +139,7 @@ class WebsiteDetailSerializer(WebsiteSerializer):
     """
     Serializer for ``Website`` detailled model
     """
-    environments = EnvironmentDetailSerializer(
+    environments = EnvironmentSerializer(
         many=True, read_only=True,
     )
     
