@@ -107,7 +107,7 @@ class EnvironmentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WebsiteEnvironment
-        fields = ('id', 'created', 'modified', 'website', 'name', 'server', 'enabled', 'detail_url')
+        fields = ('id', 'created', 'modified', 'website', 'name', 'url', 'server', 'enabled', 'detail_url')
 
 
 class EnvironmentDetailSerializer(EnvironmentSerializer):
@@ -120,7 +120,7 @@ class EnvironmentDetailSerializer(EnvironmentSerializer):
     
     class Meta:
         model = WebsiteEnvironment
-        fields = ('id', 'created', 'modified', 'website', 'website_name', 'name', 'server', 'enabled', 'detail_url', 'eggs', 'egg_list')
+        fields = ('id', 'created', 'modified', 'website', 'website_name', 'name', 'url', 'server', 'enabled', 'detail_url', 'eggs', 'egg_list')
 
 
 class WebsiteSerializer(serializers.ModelSerializer):
@@ -133,7 +133,7 @@ class WebsiteSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Website
-        fields = ('id', 'created', 'modified', 'name', 'url', 'enabled', 'description', 'detail_url')
+        fields = ('id', 'created', 'modified', 'name', 'enabled', 'description', 'detail_url')
 
 class WebsiteDetailSerializer(WebsiteSerializer):
     """
@@ -145,4 +145,4 @@ class WebsiteDetailSerializer(WebsiteSerializer):
     
     class Meta:
         model = Website
-        fields = ('id', 'created', 'modified', 'name', 'url', 'enabled', 'description', 'detail_url', 'environments')
+        fields = ('id', 'created', 'modified', 'name', 'enabled', 'description', 'detail_url', 'environments')

@@ -50,7 +50,6 @@ class Website(models.Model):
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
     name = models.CharField(_('name'), unique=True, blank=False, max_length=100)
-    url = models.CharField(_('url'), blank=False, max_length=255)
     description = models.TextField(_('description'), blank=True)
     enabled = models.BooleanField(_('enabled'), default=True)
     
@@ -69,6 +68,7 @@ class WebsiteEnvironment(models.Model):
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
     name = models.CharField(_('name'), choices=ENVIRONMENT_KIND_CHOICES, blank=False, max_length=50)
+    url = models.CharField(_('url'), blank=True, max_length=255)
     server = models.CharField(_('server'), blank=False, max_length=100)
     enabled = models.BooleanField(_('enabled'), default=True)
     eggs = models.ManyToManyField(EggVersion, blank=True)

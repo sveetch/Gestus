@@ -9,7 +9,7 @@ class WebsiteEnvironmentInline(admin.StackedInline):
 class WebsiteAdmin(admin.ModelAdmin):
     ordering = ('modified',)
     search_fields = ('name', 'description',)
-    list_display = ('name', 'url', 'modified')
+    list_display = ('name', 'modified', 'enabled')
     inlines = [
         WebsiteEnvironmentInline,
     ]
