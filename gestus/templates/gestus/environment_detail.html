@@ -1,0 +1,9 @@
+{% extends "skeleton.html" %}
+
+{% block base_content %}<div class="row">
+    <div class="small-12 columns">
+        <h2>Website environment: {{ websiteenvironment.name }}</h2>
+        <p class="text-right">Created {{ websiteenvironment.created }}</p>
+        <p class="text-right">Modified since {{ websiteenvironment.modified }}</p>
+    </div>
+</div>{% endblock %}

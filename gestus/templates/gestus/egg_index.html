@@ -1,0 +1,24 @@
+{% extends "skeleton.html" %}
+
+{% block base_content %}<div class="nice-tiles">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2>Egg index</h2>
+            
+            <ul class="list-group">{% for item in egg_list %}
+                <li><a href="{% url 'gestus:egg-detail' item.pk %}">
+                    <p class="right text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+                    <h3>{{ item.name }}</h3>
+                </a></li>
+            {% endfor %}</ul>
+            
+            {% if is_paginated %}<ul class="pagination right">
+                {% if page_obj.has_previous %}<li class="arrow"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
+                {% for item in paginator.page_range %}
+                <li{% if item == page_obj.number %} class="current"{% endif %}><a href="?page={{ item }}">{{ item }}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}<li class="arrow"><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>{% endif %}
+            </ul>{% endif %}
+        </div>
+    </div>
+</div>{% endblock %}

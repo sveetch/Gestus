@@ -18,8 +18,6 @@ Gestus will store some datas about your project :
 * The URL where the website project is published;
 * A list of installed packages with their version;
 
-**There is actually no real frontend, development has been focused on the rest API but it is browsable.**
-
 Require
 *******
 

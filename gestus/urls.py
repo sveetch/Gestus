@@ -4,10 +4,19 @@ Root url's map for application
 """
 from django.conf.urls import *
 
-from gestus.views import Index
+from gestus import views
 
 urlpatterns = patterns('',
-    url(r'^$', Index.as_view(), name='index'),
+    url(r'^$', views.Index.as_view(), name='index'),
+    
+    url(r'^websites/$', views.WebsiteIndex.as_view(), name='website-list'),
+    url(r'^websites/(?P<pk>\d+)/$', views.WebsiteDetail.as_view(), name='website-detail'),
+    
+    url(r'^environments/$', views.EnvironmentIndex.as_view(), name='environment-list'),
+    url(r'^environments/(?P<pk>\d+)/$', views.EnvironmentDetail.as_view(), name='environment-detail'),
+    
+    url(r'^eggs/$', views.EggIndex.as_view(), name='egg-list'),
+    url(r'^eggs/(?P<pk>\d+)/$', views.EggDetail.as_view(), name='egg-detail'),
 )
 
 """
@@ -18,19 +27,19 @@ try:
 except ImportError:
     pass
 else:
-    from gestus.rest import views
+    from gestus.rest import views as api_views
 
     rest_urlpatterns = format_suffix_patterns(patterns('gestus.rest.views',
         url(r'^rest/$', 'api_root'),
         
-        url(r'^rest/websites/$', views.WebsiteList.as_view(), name='api-website-list'),
-        url(r'^rest/websites/(?P<pk>\d+)/$', views.WebsiteDetail.as_view(), name='api-website-detail'),
+        url(r'^rest/websites/$', api_views.WebsiteList.as_view(), name='api-website-list'),
+        url(r'^rest/websites/(?P<pk>\d+)/$', api_views.WebsiteDetail.as_view(), name='api-website-detail'),
         
-        url(r'^rest/environments/$', views.WebsiteEnvironmentList.as_view(), name='api-environment-list'),
-        url(r'^rest/environments/(?P<pk>\d+)/$', views.WebsiteEnvironmentDetail.as_view(), name='api-environment-detail'),
+        url(r'^rest/environments/$', api_views.WebsiteEnvironmentList.as_view(), name='api-environment-list'),
+        url(r'^rest/environments/(?P<pk>\d+)/$', api_views.WebsiteEnvironmentDetail.as_view(), name='api-environment-detail'),
         
-        url(r'^rest/eggs/$', views.EggList.as_view(), name='api-egg-list'),
-        url(r'^rest/eggs/(?P<pk>\d+)/$', views.EggDetail.as_view(), name='api-egg-detail'),
+        url(r'^rest/eggs/$', api_views.EggList.as_view(), name='api-egg-list'),
+        url(r'^rest/eggs/(?P<pk>\d+)/$', api_views.EggDetail.as_view(), name='api-egg-detail'),
     ))
 
     urlpatterns = rest_urlpatterns + urlpatterns

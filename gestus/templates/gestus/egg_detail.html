@@ -1,0 +1,12 @@
+{% extends "skeleton.html" %}
+
+{% block base_content %}<div class="row">
+    <div class="small-12 columns">
+        <h2>Egg: {{ egg.name }}</h2>
+        <p class="text-right">Created {{ egg.created }}</p>
+        <p class="text-right">Modified since {{ egg.modified }}</p>
+        {% if egg.description %}<div>
+            {{ egg.description|linebreaks }}
+        </div>{% endif %}
+    </div>
+</div>{% endblock %}
