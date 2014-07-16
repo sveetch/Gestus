@@ -38,7 +38,7 @@ class CommonIndexBase(LoginRequiredMixin, generic.ListView):
     paginate_by = INDEX_LIST_MAX
     
     def get_queryset(self):
-        return self.model.objects.all().order_by('-modified', 'name')
+        return self.model.objects.all().order_by('name')
 
 class WebsiteIndex(CommonIndexBase):
     model = Website

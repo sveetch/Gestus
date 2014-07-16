@@ -1,45 +1,43 @@
 {% extends "skeleton.html" %}
 
-{% block base_content %}<div class="nice-tiles">
-    <div class="row">
-        <div class="small-12 columns">
-            <h2>Gestus index</h2>
-            
-            <hr>
-            <h3>Last modified websites</h3>
-            <div class="row equal-heights">{% for item in website_list %}
-                <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:website-detail' item.pk %}">
-                    <div class="panel radius">
-                        <h4>{{ item.name }}</h4>
-                        <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
-                    </div>
-                </a></div>
-            {% endfor %}</div>
-            <p class="text-right"><a href="{% url 'gestus:website-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
-            
-            <hr>
-            <h3>Last modified environments</h3>
-            <div class="row equal-heights">{% for item in environment_list %}
-                <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:environment-detail' item.pk %}">
-                    <div class="panel radius">
-                        <h4>{{ item.name }}</h4>
-                        <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
-                    </div>
-                </a></div>
-            {% endfor %}</div>
-            <p class="text-right"><a href="{% url 'gestus:environment-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
-            
-            <hr>
-            <h3>Last modified eggs</h3>
-            <div class="row equal-heights">{% for item in eggs_list %}
-                <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:egg-detail' item.pk %}">
-                    <div class="panel radius">
-                        <h4>{{ item.name }}</h4>
-                        <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
-                    </div>
-                </a></div>
-            {% endfor %}</div>
-            <p class="text-right"><a href="{% url 'gestus:egg-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
-        </div>
+{% block base_content %}<div class="row nice-tiles">
+    <div class="small-12 columns">
+        <h2><i class="icon-satellite"></i> Gestus index</h2>
+        
+        <hr>
+        <h3>Last modified websites</h3>
+        <div class="row equal-heights">{% for item in website_list %}
+            <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:website-detail' item.pk %}">
+                <div class="panel radius">
+                    <h4>{{ item.name }}</h4>
+                    <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+                </div>
+            </a></div>
+        {% endfor %}</div>
+        <p class="text-right"><a href="{% url 'gestus:website-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
+        
+        <hr>
+        <h3>Last modified environments</h3>
+        <div class="row equal-heights">{% for item in environment_list %}
+            <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:environment-detail' item.pk %}">
+                <div class="panel radius">
+                    <h4>{{ item }}</h4>
+                    <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+                </div>
+            </a></div>
+        {% endfor %}</div>
+        <p class="text-right"><a href="{% url 'gestus:environment-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
+        
+        <hr>
+        <h3>Last modified eggs</h3>
+        <div class="row equal-heights">{% for item in eggs_list %}
+            <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:egg-detail' item.pk %}">
+                <div class="panel radius">
+                    <h4>{{ item.name }}</h4>
+                    <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+                </div>
+            </a></div>
+        {% endfor %}</div>
+        <p class="text-right"><a href="{% url 'gestus:egg-list' %}" class="button">Full list <i class="icon-right"></i></a></p>
     </div>
 </div>{% endblock %}

@@ -76,6 +76,9 @@ class WebsiteEnvironment(models.Model):
     def __unicode__(self):
         return "{website} {env}".format(website=self.website.name, env=self.name)
     
+    def get_used_eggs(self):
+        return self.eggs.all().select_related().order_by('egg__name')
+    
     class Meta:
         verbose_name = _("website environment")
         verbose_name_plural = _("websites environments")

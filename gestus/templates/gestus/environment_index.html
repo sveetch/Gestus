@@ -5,14 +5,12 @@
         <div class="small-12 columns">
             <h2>Website environment index</h2>
             
-            <div class="row equal-heights">{% for item in websiteenvironment_list %}
-                <div class="small-12 medium-4 columns equalized-item{% if forloop.last %} end{% endif %}"><a href="{% url 'gestus:environment-detail' item.pk %}">
-                    <div class="panel radius">
-                        <h4>{{ item.name }}</h4>
-                        <p class="text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
-                    </div>
-                </a></div>
-            {% endfor %}</div>
+            <ul class="list-group">{% for item in websiteenvironment_list %}
+                <li><a href="{% url 'gestus:environment-detail' item.pk %}">
+                    <p class="right text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+                    <h3>{{ item }}</h3>
+                </a></li>
+            {% endfor %}</ul>
             
             {% if is_paginated %}<ul class="pagination right">
                 {% if page_obj.has_previous %}<li class="arrow"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
