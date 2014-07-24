@@ -19,6 +19,7 @@ class Egg(models.Model):
     name = models.CharField(_('name'), unique=True, blank=False, max_length=50)
     package = models.CharField(_('package name'), unique=True, blank=False, max_length=50)
     url = models.CharField(_('url'), blank=True, max_length=255)
+    summary = models.TextField(_('summary'), blank=True)
     description = models.TextField(_('description'), blank=True)
 
     def __unicode__(self):
