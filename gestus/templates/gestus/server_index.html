@@ -1,0 +1,10 @@
+{% extends "gestus/base.html" %}
+
+{% block gestus_content %}
+    <ul class="list-group">{% for item in server_list %}
+        <li><a href="{% url 'gestus:server-detail' hash64=item.hash64 %}">
+            <p class="right text-right"><small>{{ item.num_environment }} website environment{{ item.num_environment|pluralize }} use it</small></p>
+            <h3>{{ item.server }}</h3>
+        </a></li>
+    {% endfor %}</ul>
+{% endblock %}

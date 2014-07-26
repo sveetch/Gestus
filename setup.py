@@ -23,6 +23,7 @@ setup(
     ],
     install_requires=[
         'djangorestframework >= 2.3',
+        'autobreadcrumbs >= 0.9.1',
     ],
     include_package_data=True,
     zip_safe=False

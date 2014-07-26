@@ -1,0 +1,10 @@
+{% extends "skeleton.html" %}
+{% load autobreadcrumb %}
+
+{% block base_content %}<div class="row">
+    <div class="small-12 columns">
+        {% autobreadcrumbs_tag %}
+        <h2>{% current_title_from_breadcrumbs %}</h2>
+        {% block gestus_content %}{% endblock %}
+    </div>
+</div>{% endblock %}

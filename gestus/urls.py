@@ -17,6 +17,9 @@ urlpatterns = patterns('',
     
     url(r'^eggs/$', views.EggIndex.as_view(), name='egg-list'),
     url(r'^eggs/(?P<pk>\d+)/$', views.EggDetail.as_view(), name='egg-detail'),
+    
+    url(r'^servers/$', views.ServerIndex.as_view(), name='server-list'),
+    url(r'^servers/(?P<hash64>[-=\w]+)/$', views.ServerDetail.as_view(), name='server-detail'),
 )
 
 """

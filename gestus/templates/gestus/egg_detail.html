@@ -1,34 +1,27 @@
-{% extends "skeleton.html" %}
+{% extends "gestus/base.html" %}
 
-{% block base_content %}<div class="row">
-    <div class="small-12 columns">
-        <h2>
-            <small class="subhead">Egg</small> 
-            {{ egg.name }}
-        </h2>
-        
-        <p class="text-right">
-            <i class="icon-clock" title="Created on {{ egg.created }}"></i> {{ egg.modified }}
-        </p>
-        
-        <div class="panel radius">
-            {% if egg.summary %}<p>{{ egg.summary }}</p>{% endif %}
-            <p><strong>URL: </strong><a href="{{ egg.url }}">{{ egg.url }}</a></p>
-            <p><strong>Package name: </strong>{{ egg.package }}</p>
-        </div>
-        
-        <hr>
-        
-        <h3>Versions ({{ egg.versions.count }})</h3>
-        
-        <p>{% for item in egg.versions.all %}
-            <span class="label radius">{{ item.name }}</span>{% if not forloop.last %} - {% endif %}
-        {% endfor %}</p>
-        
-        {% if egg.description %}<hr>
-        <div>
-            <h3>Description</h3>
-            {{ egg.description|linebreaks }}
-        </div>{% endif %}
+{% block gestus_content %}
+    <p class="text-right">
+        <i class="icon-clock" title="Created on {{ egg.created }}"></i> {{ egg.modified }}
+    </p>
+    
+    <div class="panel radius">
+        {% if egg.summary %}<p>{{ egg.summary }}</p>{% endif %}
+        <p><strong>URL: </strong><a href="{{ egg.url }}">{{ egg.url }}</a></p>
+        <p><strong>Package name: </strong>{{ egg.package }}</p>
     </div>
-</div>{% endblock %}
+    
+    <hr>
+    
+    <h3>Versions ({{ egg.versions.count }})</h3>
+    
+    <p>{% for item in egg.versions.all %}
+        <span class="label radius">{{ item.name }}</span>{% if not forloop.last %} - {% endif %}
+    {% endfor %}</p>
+    
+    {% if egg.description %}<hr>
+    <div>
+        <h3>Description</h3>
+        {{ egg.description|linebreaks }}
+    </div>{% endif %}
+{% endblock %}

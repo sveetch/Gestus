@@ -1,0 +1,12 @@
+{% extends "gestus/base.html" %}
+
+{% block gestus_content %}
+    <h3>Environments</h3>
+    
+    <ul class="list-group">{% for item in environment_list %}
+        <li><a href="{% url 'gestus:environment-detail' item.pk %}">
+            <p class="right text-right"><small title="{{ item.modified }}">Modified since {{ item.modified|timesince }}</small></p>
+            <h3>{{ item }}</h3>
+        </a></li>
+    {% endfor %}</ul>
+{% endblock %}

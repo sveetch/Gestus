@@ -1,30 +1,23 @@
-{% extends "skeleton.html" %}
+{% extends "gestus/base.html" %}
 
-{% block base_content %}<div class="row">
-    <div class="small-12 columns">
-        <h2>
-            <small class="subhead">Website environment</small> 
-            {{ websiteenvironment }}
-        </h2>
-        
-        <p class="text-right">
-            <i class="icon-clock" title="Created on {{ websiteenvironment.created }}"></i> {{ websiteenvironment.modified }}
-        </p>
-        
-        <div class="panel radius">
-            <p><strong>URL: </strong><a href="{{ websiteenvironment.url }}">{{ websiteenvironment.url }}</a></p>
-            <p><strong>Server hostname: </strong>{{ websiteenvironment.server }}</p>
-        </div>
-        
-        <hr>
-        
-        <h3>Used eggs ({{ websiteenvironment.get_used_eggs.count }})</h3>
-        
-        <ul class="list-group">{% for item in websiteenvironment.get_used_eggs %}
-            <li><a href="{% url 'gestus:egg-detail' item.egg.pk %}">
-                <p class="right text-right"><small>Version {{ item.name }}</small></p>
-                <h3>{{ item.egg.name }}</h3>
-            </a></li>
-        {% endfor %}</ul>
+{% block gestus_content %}
+    <p class="text-right">
+        <i class="icon-clock" title="Created on {{ websiteenvironment.created }}"></i> {{ websiteenvironment.modified }}
+    </p>
+    
+    <div class="panel radius">
+        <p><strong>URL: </strong><a href="{{ websiteenvironment.url }}">{{ websiteenvironment.url }}</a></p>
+        <p><strong>Server hostname: </strong>{{ websiteenvironment.server }}</p>
     </div>
-</div>{% endblock %}
+    
+    <hr>
+    
+    <h3>Used eggs ({{ websiteenvironment.get_used_eggs.count }})</h3>
+    
+    <ul class="list-group">{% for item in websiteenvironment.get_used_eggs %}
+        <li><a href="{% url 'gestus:egg-detail' item.egg.pk %}">
+            <p class="right text-right"><small>Version {{ item.name }}</small></p>
+            <h3>{{ item.egg.name }}</h3>
+        </a></li>
+    {% endfor %}</ul>
+{% endblock %}
