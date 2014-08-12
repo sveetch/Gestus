@@ -23,7 +23,7 @@ setup(
     ],
     install_requires=[
         'djangorestframework >= 2.3',
-        'autobreadcrumbs >= 0.9.1',
+        'autobreadcrumbs >= 1.0',
         'django-braces>=1.2.0,<1.4',
     ],
     include_package_data=True,
